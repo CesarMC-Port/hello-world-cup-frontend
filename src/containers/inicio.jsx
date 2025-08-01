@@ -143,7 +143,11 @@ function Inicio() {
       <div className='w-[32%] flex flex-col justify-center items-start gap-[20px]'>
         <div className="bg-white flex flex-col w-full rounded-2xl shadow-md p-[10px]">
           <h1 className="text-[20px] font-bold">Perfil</h1>
-          <p></p>
+          <p>Nombre: {user.name}</p>
+          <p>Role: {user.role}</p>
+          <p>Apodo: {user.nick_name}</p>
+          <p>Nombre de usuario: {user.user_name}</p>
+          <p>Email: {user.email}</p>
         </div>
         <div className="bg-white flex flex-col w-full rounded-2xl shadow-md p-[10px]">
           <h1 className="text-[20px] font-bold">Cursos</h1>
