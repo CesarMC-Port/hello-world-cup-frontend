@@ -5,6 +5,10 @@
   transition: all ease-in-out 0.5s;
 }
 
+.root{
+  height: auto !important;
+}
+
 .container-list{
   display: grid;
   width: 100%;

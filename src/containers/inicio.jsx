@@ -7,7 +7,7 @@ import Card from '../components/card'
 import { getUser, indexUser } from '../services/user-services'
 import { Input, Form } from "antd"
 
-function Inicio(props) {
+function Inicio() {
   const [form] = Form.useForm();
   const [type, setType] = useState('posts');
   const [user, setUser] = useState({})
@@ -34,7 +34,7 @@ function Inicio(props) {
     loadData()
   },[])
 
-  return <>
+  return <div className='w-full h-auto flex flex-col'>
      {/* <div className='box-load'>
       <Lottie 
         animationData={dashboard} 
@@ -44,7 +44,7 @@ function Inicio(props) {
       />
     </div> */}
     <Header/>
-    <section className="w-full h-[100vh] flex row flex-nowrap items-start justify-center p-[40px]">
+    <section className="w-full h-auto flex row flex-nowrap items-start justify-center p-[40px]">
       <div className='w-[32%] flex col justify-center items-start bg-white rounded-2xl shadow-md p-[10px]'>
         <h1 className="text-[20px] font-bold">Tutores Destacados</h1>
       </div>
@@ -102,7 +102,7 @@ function Inicio(props) {
               data={{
                 ...e,
                 button: 'Seguir',
-                image: e?.user_name,
+                image: e?.profile_image,
                 content: <>
                   <p className="text-[16px] w-full">user_name: {e?.user_name}</p>
                   <p className="text-[16px] w-full">apodo: {e?.nick_name}</p>
@@ -135,8 +135,7 @@ function Inicio(props) {
         </div>
       </div>
     </section>
-    <Footer/>
-  </>
+  </div>
 }
 
 export default Inicio
