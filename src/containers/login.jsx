@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router'
 import { Input, Form } from "antd"
 import { axiosQuery } from '../utils/axios';
 import Lottie from "lottie-react";
-import loginregistergif from '../assets/loginregistergif.json'
+import loginregistergif from '../assets/rocketwebpage.json'
 
 function Login() {
   const navigate = useNavigate();
@@ -14,9 +14,9 @@ function Login() {
     setLoading(true);
     let user = form.getFieldValue();
     const response = await axiosQuery.post("/login",user);
-    localStorage.setItem("token", response.data.data.token)
-    setLoading(false)
-    navigate("/dashboard")
+    localStorage.setItem("token", response.data.data.token);
+    setLoading(false);
+    window.location.replace("/dashboard");
   };
 
   const testAccounts = [

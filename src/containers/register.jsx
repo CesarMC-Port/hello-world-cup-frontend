@@ -4,7 +4,7 @@ import { Input, Form, Upload, Button } from "antd"
 import { UploadOutlined } from '@ant-design/icons';
 import { register } from '../services/auth-services';
 import Lottie from "lottie-react";
-import loginregistergif from '../assets/loginregistergif.json'
+import loginregistergif from '../assets/rocketwebpage.json'
 
 function Login() {
   const navigate = useNavigate();
@@ -12,12 +12,29 @@ function Login() {
   const [form] = Form.useForm();
 
   const onFinish = async () => {
-    setLoading(false)
-    let data = form.getFieldsValue();
-    await register(data);
-    setLoading(true)
-    navigate('/login')    
-  }
+    setLoading(true);
+    const data = form.getFieldsValue();
+
+    const formData = new FormData();
+    formData.append('name', data.name);
+    formData.append('email', data.email);
+    formData.append('password', data.password);
+    formData.append('password_confirmation', data.password_confirmation);
+
+    const fileObj = data.profile_image?.file?.originFileObj;
+    if (fileObj) {
+      formData.append('profile_image', fileObj);
+    }
+
+    try {
+      await register(formData);
+      navigate('/login');
+    } catch (error) {
+      console.error("Error al registrar:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section className='flex justify-center flex-row items-center w-full h-[100vh]'>
@@ -26,7 +43,7 @@ function Login() {
           animationData={loginregistergif} 
           loop={true} 
           autoplay={true} 
-          style={{ width: "100%", height: "100%"}}
+          style={{ width: "100%", height: "100%", transform: "scaleX(1)"}}
           rendererSettings={{
             preserveAspectRatio: "xMidYMid slice"
           }}
@@ -74,15 +91,8 @@ function Login() {
                 >
                   <Input type='password'/>
                 </Form.Item>
-                <Form.Item
-                  label="Cedula"
-                  name="identity_card"
-                  rules={[{ required: true, message: 'Por favor agrega tu Cedula' }]}
-                >
-                  <Input />
-                </Form.Item>
                 <Form.Item 
-                  name="image" 
+                  name="profile_image" 
                   label="Imagen de perfil"
                   rules={[{ required: true, message: "Por favor agrega tu imagen de perfil" }]}
                 >

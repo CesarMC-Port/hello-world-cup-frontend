@@ -11,7 +11,9 @@ export const login = async (data) => {
 
 export const register = async (data) => {
     try {
-        const response = await axiosQuery.post('/register', data);
+        const response = await axiosQuery.post('/register', data, {
+            headers: { 'Content-Type': 'multipart/form-data' },
+        });
         return response.data;
     } catch (error) {
         throw error.response ? error.response.data : new Error('Network Error');
