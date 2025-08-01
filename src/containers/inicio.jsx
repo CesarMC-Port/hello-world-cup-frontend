@@ -5,6 +5,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import Header from '../components/header'
 import Card from '../components/card'
 import { getUser, indexUser } from '../services/user-services'
+import { followE } from '../services/follow-services';
 // import { }
 import { Input, Form } from "antd"
 import { ModalPublicaciones } from '../components/modalPublicaciones'
@@ -18,15 +19,17 @@ function Inicio() {
   const [loading, setLoading] = useState(false)
   const stateModalPost = useRef(() => {})
 
-  const follow = async () => {
-    // let 
+  const follow = async (id) => {
+    await followE(`${id}`);
   }
 
   const loadData = useCallback(async () => {
     let coms = await indexUser();
-    // let user = await getUser();
+    let user = await getUser();
     // let comp = await getPost();
     
+    console.log(user?.data?.user)
+    setUser(user?.data?.user)
     setUsers(coms?.data?.users?.data);
     // setPosts(comp?.data?.posts?.data);
 
@@ -110,9 +113,7 @@ function Inicio() {
                   <p className="text-[16px] w-full">user_name: {e?.user_name}</p>
                   <p className="text-[16px] w-full">apodo: {e?.nick_name}</p>
                 </>,
-                onClick: () => {
-
-                }
+                onClick: (datas) => follow(datas?.id)
               }}
             />
           }) : posts?.map(e => {
