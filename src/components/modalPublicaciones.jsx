@@ -25,16 +25,16 @@ export const ModalPublicaciones = ({openState}) => {
         }
 
         try {
-        await createPost(formData, (mess) => {
+        const res = await createPost(formData, (mess) => {
             toast(mess)
-            console.log
+            if(res){
+                 setOpen(false);
+                form.resetFields()
+            }
         });
         } catch (error) {
         console.error("Error al subir una Publicación:", error);
-        } finally {
-            setOpen(false);
-            form.resetFields()
-        }
+        } 
     };
 
     useEffect(() => {
