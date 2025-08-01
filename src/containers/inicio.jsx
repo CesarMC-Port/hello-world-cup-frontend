@@ -99,7 +99,7 @@ function Inicio() {
               data={{
                 ...e,
                 button: 'Seguir',
-                image: e?.profile_image,
+                image: e?.profile_image_url,
                 content: <>
                   <p className="text-[16px] w-full">user_name: {e?.user_name}</p>
                   <p className="text-[16px] w-full">apodo: {e?.nick_name}</p>
