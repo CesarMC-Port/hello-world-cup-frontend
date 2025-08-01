@@ -24,6 +24,10 @@ function Inicio() {
     await followE(`${id}`);
   }
 
+  const onFinish = () => {
+    
+  }
+
   const loadData = useCallback(async () => {
     let coms = await indexUser();
     let user = await getUser();
@@ -58,15 +62,17 @@ function Inicio() {
         <div className="w-[100%] h-[60px]">
           <div className="bg-white rounded-2xl shadow-md w-full p-[10px] pt-0">
             <div className="w-full flex row">
-              <Input className='w-full' />
-              <div className='flex justify-center items-center ml-[20px] min-w-[200px]'>
-                <button
-                  disabled={loading}
-                  className="w-full bg-blue-800 text-white py-2 px-3 rounded-lg hover:bg-blue-900 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-medium"
-                >
-                  {loading ? 'Buscando...' : 'Buscar '}
-                </button>
-              </div>
+              <Form form={form} >
+                <Input className='w-full' />
+                <div className='flex justify-center items-center ml-[20px] min-w-[200px]'>
+                  <button
+                    disabled={loading}
+                    className="w-full bg-blue-800 text-white py-2 px-3 rounded-lg hover:bg-blue-900 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+                  >
+                    {loading ? 'Buscando...' : 'Buscar '}
+                  </button>
+                </div>
+              </Form>
             </div>
           </div>
         </div>
