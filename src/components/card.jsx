@@ -1,4 +1,4 @@
-function Card({data:{name, content, image, onClick=()=>{},button}}) {
+function Card({data:{name, content, image, onClick=()=>{},button,id}}) {
 
     return <>
         <div className="w-full h-auto gap-1 border border-solid border-gray-200 shadow-sm flex flex-col center-global p-[20px]">
@@ -9,7 +9,7 @@ function Card({data:{name, content, image, onClick=()=>{},button}}) {
             {content}
             <button
                 type="submit"
-                onClick={onClick}
+                onClick={() => onClick({name, content, image,id})}
                 className="w-full bg-green-800 text-white py-2 px-3 rounded-lg hover:bg-blue-900 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-medium text-[14px]"
             >
                 {button}

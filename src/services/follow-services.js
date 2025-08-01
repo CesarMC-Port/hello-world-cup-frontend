@@ -1,6 +1,6 @@
 import { axiosQuery } from '../utils/axios.js'
 
-export const follow = async (teacher_id,callback=() => {}) => {
+export const followE = async (teacher_id,callback=() => {}) => {
     try {
         const response = await axiosQuery.post('/follow',{teacher_id});
         return response.data;
