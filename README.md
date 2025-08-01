@@ -1,15 +1,58 @@
-## SIPL
+# Hello World Cup 2025 - Proyecto React + Vite
 
-Este es un SIPL que la Unet implementó para pedir libros, en el cual los usuarios solicitan los libros y los admin dan los permisos necesarios para ello
+Este es un proyecto base creado para la **Hello World Cup 2025** de la **UNET (Universidad del Táchira)**.  
+Por ahora es una plantilla inicial con **React** y **Vite**, lista para ser adaptada según los requerimientos de la competencia.
 
-### Herramientas utilizadas 
+---
 
-Se utilizó React con vite por lo cual la ejecución del codigo es la siguiente
+## 🚀 Requisitos previos
 
-Se tiene que configurar la url del backend en el archivo .env 
+Asegúrate de tener instalado:
 
-### correr el frontend de la aplicación
+- [Node.js](https://nodejs.org/) (versión 20.19.4 o superior recomendada)
+- [npm](https://www.npmjs.com/) o [pnpm](https://pnpm.io/) o [yarn](https://yarnpkg.com/)
 
-cd unet-sipl-frontend
-npm i
+---
+
+## 📦 Instalación
+
+Clona este repositorio:
+
+```bash
+git clone https://github.com/usuario/hello-world-cup-frontend.git
+cd nombre-del-repo
+Instala las dependencias:
+
+bash
+Copiar
+Editar
+npm install
+(Si usas pnpm o yarn, cambia el comando por pnpm install o yarn install)
+
+▶️ Ejecución en desarrollo
+bash
+Copiar
+Editar
 npm run dev
+Esto iniciará un servidor local de desarrollo.
+Generalmente estará disponible en: http://localhost:5173/
+
+🛠️ Construcción para producción
+bash
+Copiar
+Editar
+npm run build
+Esto generará la carpeta dist con la versión optimizada del proyecto.
+
+📄 Licencia
+Este proyecto está bajo la licencia MIT.
+Siéntete libre de modificarlo y adaptarlo a tus necesidades.
+
+yaml
+Copiar
+Editar
+
+---
+
+Si quieres, puedo dejarlo también con **un toque más “competencia UNET”** con colores, emojis y presentación más llamativa para que no se vea tan genérico.  
+¿Quieres que lo prepare así también para que ya quede más visual?
