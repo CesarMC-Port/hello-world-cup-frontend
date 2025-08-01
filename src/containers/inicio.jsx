@@ -7,7 +7,8 @@ import { useState } from 'react'
 
 function Inicio() {
   const [form] = Form.useForm();
-  const [type, setType] = useState('posts')
+  const [type, setType] = useState('posts');
+  const [user, setUser] = useState({})
   const [loading, setLoading] = useState(false)
 
   const onFinish = () => {
@@ -25,12 +26,12 @@ function Inicio() {
     </div> */}
     <Header/>
     <section className="w-full h-[100vh] flex row flex-nowrap items-start justify-center p-[40px]">
-      <div className='w-[25%] flex col justify-center items-start'>
+      <div className='w-[32%] flex col justify-center items-start bg-white rounded-2xl shadow-md p-[10px]'>
         <h1 className="text-[20px] font-bold">Tutores De La Semana</h1>
       </div>
       <div className='w-full h-[100vh] flex flex-col flex-nowrap items-center justify-start p-[40px]'>
-        <div className="w-[70%] h-[60px]">
-          <div className="bg-white rounded-2xl shadow-xl w-full p-[10px] ">
+        <div className="w-[100%] h-[60px]">
+          <div className="bg-white rounded-2xl shadow-md w-full p-[10px] ">
             <div className="w-full flex row">
               <Input className='w-full' />
               <div className='flex justify-center items-center ml-[20px] min-w-[200px]'>
@@ -80,8 +81,14 @@ function Inicio() {
           
         </div>
       </div>
-      <div className='w-[25%] flex col justify-center items-start'>
-        <h1 className="text-[20px] font-bold">Estudiantes De La Semana</h1>
+      <div className='w-[32%] flex flex-col justify-center items-start gap-[20px]'>
+        <div className="bg-white flex flex-col w-full rounded-2xl shadow-md p-[10px]">
+          <h1 className="text-[20px] font-bold">Perfil</h1>
+          <p></p>
+        </div>
+        <div className="bg-white flex flex-col w-full rounded-2xl shadow-md p-[10px]">
+          <h1 className="text-[20px] font-bold">Estudiantes De La Semana</h1>
+        </div>
       </div>
     </section>
     <Footer/>

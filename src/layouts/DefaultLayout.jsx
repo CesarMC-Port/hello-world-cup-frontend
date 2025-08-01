@@ -7,10 +7,12 @@ export const DefaultLayout = () => {
     const location = useLocation();
     const [logged, setLogged] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState({})
 
     const verify = useCallback(async () => {
         try {
-            await axiosQuery.get('/user');
+            let response = await axiosQuery.get('/user');
+            setUser(response?.data)
             setLogged(true);
         } catch (error) {
             setLogged(false);
@@ -41,5 +43,5 @@ export const DefaultLayout = () => {
         return <Navigate to="/login" replace />;
     }
 
-    return <Outlet />;
+    return <Outlet user={user} />;
 }
