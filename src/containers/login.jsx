@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router'
+import { Link } from 'react-router'
 import { Input, Form } from "antd"
 import { axiosQuery } from '../utils/axios';
 import Lottie from "lottie-react";
 import loginregistergif from '../assets/rocketwebpage.json'
 
 function Login() {
-  const navigate = useNavigate();
   const [loading,setLoading] = useState(false) 
   const [form] = Form.useForm();
 
