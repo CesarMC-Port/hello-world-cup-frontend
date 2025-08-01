@@ -9,6 +9,7 @@ import { followE } from '../services/follow-services';
 // import { }
 import { Input, Form } from "antd"
 import { ModalPublicaciones } from '../components/modalPublicaciones'
+import { indexPost } from '../services/post-services'
 
 function Inicio() {
   const [form] = Form.useForm();
@@ -26,9 +27,12 @@ function Inicio() {
   const loadData = useCallback(async () => {
     let coms = await indexUser();
     let user = await getUser();
-    
+    let pos = await indexPost();
+
+    console.log(user?.data?.user)
     setUser(user?.data?.user)
     setUsers(coms?.data?.users?.data);
+    setPosts(pos?.data?.publications?.data);
 
   },[])
 
@@ -89,13 +93,13 @@ function Inicio() {
                 >
                   Usuarios
                 </div>
-                <button
+                {user?.role === 'teacher' && <button
                   type="submit"
                   onClick={() => stateModalPost.current(true)}
                   className="w-full min-w-[200px] bg-green-800 text-white py-2 px-3 rounded-lg hover:bg-blue-900 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-medium text-[14px]"
                 >
                   Crear Publicacion
-                </button>
+                </button>}
               </div>
             </div>
         </div>
@@ -117,7 +121,11 @@ function Inicio() {
             return <Card
               data={{
                 ...e,
-                button: 'Agregar Mensaje', 
+                button: 'Ver publicación',
+                image: e?.image_url,
+                content: <>
+                  <p className="text-[16px] w-full">{e?.description}</p>
+                </>,
                 onClick: () => {
 
                 }
