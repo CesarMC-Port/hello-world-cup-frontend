@@ -1,6 +1,5 @@
 function Card({data:{name, content, image, onClick=()=>{},button}}) {
 
-    console.log(image)
     return <>
         <div className="w-full h-auto gap-1 border border-solid border-gray-200 shadow-sm flex flex-col center-global p-[20px]">
             <div className="w-full h-[100px] object-contain">
