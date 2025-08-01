@@ -12,7 +12,7 @@ export const createPost = async (data, callback=() => {}) => {
 
 export const indexPost = async (callback=() => {}) => {
     try {
-        const response = await axiosQuery.get('/publication');
+        const response = await axiosQuery.get('/publications');
         return response.data;
     } catch (error) {
         callback(error?.response?.data?.errors?.error?.[0] || '')
