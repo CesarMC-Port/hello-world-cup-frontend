@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router'
 import { Input, Form, Upload, Button } from "antd"
 import { UploadOutlined } from '@ant-design/icons';
 import { register } from '../services/auth-services';
+import toast, { Toaster } from 'react-hot-toast';
 import Lottie from "lottie-react";
 import loginregistergif from '../assets/rocketwebpage.json'
 
@@ -124,6 +125,7 @@ function Login() {
           </div>
         </div>
       </div>
+      <Toaster/>
     </section>
   )
 }
