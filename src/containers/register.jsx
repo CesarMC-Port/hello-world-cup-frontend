@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router'
-import { Input, Form, Upload, Button } from "antd"
+import { Input, Form, Upload, Button, Select } from "antd"
 import { UploadOutlined } from '@ant-design/icons';
 import { register } from '../services/auth-services';
 import toast, { Toaster } from 'react-hot-toast';
 import Lottie from "lottie-react";
 import loginregistergif from '../assets/rocketwebpage.json'
+import { roleoptions } from '../helper.user';
 
 function Login() {
   const navigate = useNavigate();
@@ -21,6 +22,10 @@ function Login() {
     formData.append('email', data.email);
     formData.append('password', data.password);
     formData.append('password_confirmation', data.password_confirmation);
+    formData.append('user_name', data.user_name);
+    formData.append('nick_name', data.nick_name);
+    formData.append('role', data.role);
+    
 
     const fileObj = data.profile_image?.file?.originFileObj;
     if (fileObj) {
@@ -76,7 +81,29 @@ function Login() {
                 <Form.Item
                   label="Email"
                   name="email"
-                  rules={[{ required: true, message: 'Por favor agrega tu email' }]}
+                  rules={[{ required: true, message: 'Por favor agrega tu correo' }]}
+                >
+                  <Input />
+                </Form.Item>
+                <Form.Item
+                  label="Rol"
+                  name="role"
+                  rules={[{ required: true, message: 'Por favor agrega tu rol' }]}
+                >
+                  <Select options={roleoptions} />
+                </Form.Item>
+                
+                <Form.Item
+                  label="Nombre de Usuario"
+                  name="user_name"
+                  rules={[{ required: true, message: 'Por favor agrega tu Nombre de Usuario' }]}
+                >
+                  <Input />
+                </Form.Item>
+                <Form.Item
+                  label="Apodo"
+                  name="nick_name"
+                  rules={[{ required: true, message: 'Por favor agrega tu Apodo' }]}
                 >
                   <Input />
                 </Form.Item>
@@ -94,6 +121,7 @@ function Login() {
                 >
                   <Input type='password'/>
                 </Form.Item>
+                
                 <Form.Item 
                   name="profile_image" 
                   label="Imagen de perfil"

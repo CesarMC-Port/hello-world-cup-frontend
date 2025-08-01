@@ -21,6 +21,10 @@
   border-radius: 10px;
 }
 
+.ant-form-item{
+  margin-bottom: 8px !important;
+}
+
 @keyframes fadeOutAfterDelay {
   0% {
     opacity: 1;
@@ -51,6 +55,7 @@
 }
 
 .ant-form-item-label{
+  font-weight: 500 !important;
   padding-bottom: 0px !important;
 }
 
