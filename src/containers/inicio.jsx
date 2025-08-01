@@ -4,6 +4,7 @@ import Lottie from 'lottie-react'
 import Header from '../components/header'
 import Card from '../components/card'
 import { getUser, indexUser } from '../services/user-services'
+// import { }
 import { Input, Form } from "antd"
 import { ModalPublicaciones } from '../components/modalPublicaciones'
 
@@ -16,14 +17,18 @@ function Inicio() {
   const [loading, setLoading] = useState(false)
   const stateModalPost = useRef(() => {})
 
-  const loadData = useCallback(async () => {
-    let com = await indexUser();
-    // let user = await getUser();
-    // let posts = await getPost();
+  const follow = () => {
     
-    console.log(com?.data?.users?.data)
-    setUsers(com?.data?.users?.data)
-    // setUser(user?.data)
+  }
+
+  const loadData = useCallback(async () => {
+    let coms = await indexUser();
+    // let user = await getUser();
+    // let comp = await getPost();
+    
+    setUsers(coms?.data?.users?.data);
+    // setPosts(comp?.data?.posts?.data);
+
   },[])
 
   useEffect(() => {
