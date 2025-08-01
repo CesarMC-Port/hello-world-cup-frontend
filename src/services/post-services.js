@@ -1,8 +1,8 @@
 import { axiosQuery } from '../utils/axios.js'
 
-export const createPost = async (callback=() => {}) => {
+export const createPost = async (data, callback=() => {}) => {
     try {
-        const response = await axiosQuery.post('/publication');
+        const response = await axiosQuery.post('/publication',data);
         return response.data;
     } catch (error) {
         return callback(error?.response?.data?.errors?.error?.[0] || '')

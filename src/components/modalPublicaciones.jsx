@@ -6,7 +6,6 @@ import { createPost } from "../services/post-services";
 
 export const ModalPublicaciones = ({openState}) => {
     const [form] = Form.useForm();
-    const [close, setClose] = useState(false)
     const [open, setOpen] = useState(false)
     
 
@@ -15,12 +14,14 @@ export const ModalPublicaciones = ({openState}) => {
 
         const formData = new FormData();
         formData.append('name', data.name);
+        formData.append('description', data.description);
+
 
         
 
         const fileObj = data.profile_image?.file?.originFileObj;
         if (fileObj) {
-        formData.append('profile_image', fileObj);
+        formData.append('image', fileObj);
         }
 
         try {
@@ -30,7 +31,7 @@ export const ModalPublicaciones = ({openState}) => {
         } catch (error) {
         console.error("Error al subir una Publicación:", error);
         } finally {
-            setClose(true);
+            setOpen(false);
         }
     };
 
@@ -48,7 +49,7 @@ export const ModalPublicaciones = ({openState}) => {
             <Form.Item
                 label="Titulo"
                 name="name"
-                rules={[{ required: true, message: 'Por favor agrega tu nombre' }]}
+                rules={[{ required: true, message: 'Por favor agrega el nombre de la publicacion' }]}
             >
                 <Input type="text" />
             </Form.Item>
@@ -56,7 +57,7 @@ export const ModalPublicaciones = ({openState}) => {
             <Form.Item
                 label="descripción"
                 name="description"
-                rules={[{ required: true, message: 'Por favor agrega tu nombre' }]}
+                rules={[{ required: true, message: 'Por favor agrega la descripcion' }]}
             >
                 <Input type="text" />
             </Form.Item>
