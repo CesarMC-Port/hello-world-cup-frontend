@@ -5,7 +5,8 @@ export const login = async (data,callback=() => {}) => {
         const response = await axiosQuery.post('/login', data);
         return response.data;
     } catch (error) {
-        return callback(error?.response?.data?.errors?.error?.[0] || '')
+        callback(error?.response?.data?.errors?.error?.[0] || '')
+        throw new Error(error?.response?.data?.errors?.error?.[0] || '')
     }
 }
 
@@ -16,6 +17,7 @@ export const register = async (data,callback=() => {}) => {
         });
         return response.data;
     } catch (error) {
-        return callback(error?.response?.data?.errors?.error?.[0] || '')
+        callback(error?.response?.data?.errors?.error?.[0] || '')
+        throw new Error(error?.response?.data?.errors?.error?.[0] || '')
     }
 }

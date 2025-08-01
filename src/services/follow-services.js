@@ -5,6 +5,7 @@ export const follow = async (teacher_id,callback=() => {}) => {
         const response = await axiosQuery.post('/follow',{teacher_id});
         return response.data;
     } catch (error) {
-        return callback(error?.response?.data?.errors?.error?.[0] || '')
+        callback(error?.response?.data?.errors?.error?.[0] || '')
+        throw new Error(error?.response?.data?.errors?.error?.[0] || '')
     }
 }
