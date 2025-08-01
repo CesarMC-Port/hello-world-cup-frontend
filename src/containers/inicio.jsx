@@ -26,12 +26,9 @@ function Inicio() {
   const loadData = useCallback(async () => {
     let coms = await indexUser();
     let user = await getUser();
-    // let comp = await getPost();
     
-    console.log(user?.data?.user)
     setUser(user?.data?.user)
     setUsers(coms?.data?.users?.data);
-    // setPosts(comp?.data?.posts?.data);
 
   },[])
 
