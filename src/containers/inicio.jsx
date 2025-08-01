@@ -7,6 +7,7 @@ import { getUser, indexUser } from '../services/user-services'
 // import { }
 import { Input, Form } from "antd"
 import { ModalPublicaciones } from '../components/modalPublicaciones'
+import { indexPost } from '../services/post-services'
 
 function Inicio() {
   const [form] = Form.useForm();
@@ -27,7 +28,9 @@ function Inicio() {
     // let comp = await getPost();
     
     setUsers(coms?.data?.users?.data);
-    // setPosts(comp?.data?.posts?.data);
+
+    let pos = await indexPost();
+    setPosts(pos?.data?.publications?.data);
 
   },[])
 
@@ -118,7 +121,11 @@ function Inicio() {
             return <Card
               data={{
                 ...e,
-                button: 'Agregar Mensaje', 
+                button: 'Ver publicación',
+                image: e?.image_url,
+                content: <>
+                  <p className="text-[16px] w-full">{e?.description}</p>
+                </>,
                 onClick: () => {
 
                 }
