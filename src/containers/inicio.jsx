@@ -6,6 +6,7 @@ import Footer from '../components/footer'
 import Card from '../components/card'
 import { getUser, indexUser } from '../services/user-services'
 import { Input, Form } from "antd"
+import { ModalPublicaciones } from '../components/modalPublicaciones'
 
 function Inicio(props) {
   const [form] = Form.useForm();
@@ -16,9 +17,8 @@ function Inicio(props) {
   const [loading, setLoading] = useState(false)
 
 
-  const onFinish = () => {
 
-  }
+
 
   const loadData = useCallback(async () => {
     let com = await indexUser();
@@ -134,6 +134,7 @@ function Inicio(props) {
           <h1 className="text-[20px] font-bold">Cursos</h1>
         </div>
       </div>
+      <ModalPublicaciones  />
     </section>
     <Footer/>
   </>
