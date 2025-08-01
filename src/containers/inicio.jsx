@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import dashboard from '../assets/dashboard.json'
 import Lottie from 'lottie-react'
+import toast, { Toaster } from 'react-hot-toast';
 import Header from '../components/header'
 import Card from '../components/card'
 import { getUser, indexUser } from '../services/user-services'
@@ -18,8 +19,8 @@ function Inicio() {
   const [loading, setLoading] = useState(false)
   const stateModalPost = useRef(() => {})
 
-  const follow = () => {
-    
+  const follow = async () => {
+    // let 
   }
 
   const loadData = useCallback(async () => {
@@ -146,6 +147,7 @@ function Inicio() {
       <ModalPublicaciones openState={(func=() => {}) => {
         stateModalPost.current = func;
       }} />
+      <Toaster />
     </section>
   </div>
 }

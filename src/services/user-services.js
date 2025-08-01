@@ -5,7 +5,8 @@ export const indexUser = async (callback=() => {}) => {
         const response = await axiosQuery.get('/users?role=student');
         return response.data;
     } catch (error) {
-        return callback(error?.response?.data?.errors?.error?.[0] || '')
+        callback(error?.response?.data?.errors?.error?.[0] || '')
+        throw new Error(error?.response?.data?.errors?.error?.[0] || '')
     }
 }
 
@@ -14,6 +15,7 @@ export const getUser = async (callback=() => {}) => {
         const response = await axiosQuery.get('/user');
         return response.data;
     } catch (error) {
-        return callback(error?.response?.data?.errors?.error?.[0] || '')
+        callback(error?.response?.data?.errors?.error?.[0] || '')
+        throw new Error(error?.response?.data?.errors?.error?.[0] || '')
     }
 }
