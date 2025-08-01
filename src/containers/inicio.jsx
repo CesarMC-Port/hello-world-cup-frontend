@@ -1,8 +1,7 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import dashboard from '../assets/dashboard.json'
 import Lottie from 'lottie-react'
 import Header from '../components/header'
-import Footer from '../components/footer'
 import Card from '../components/card'
 import { getUser, indexUser } from '../services/user-services'
 import { Input, Form } from "antd"
@@ -15,10 +14,7 @@ function Inicio() {
   const [users, setUsers] = useState([])
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(false)
-
-
-
-
+  const stateModalPost = useRef(() => {})
 
   const loadData = useCallback(async () => {
     let com = await indexUser();
@@ -89,6 +85,7 @@ function Inicio() {
                 </div>
                 <button
                   type="submit"
+                  onClick={() => stateModalPost.current(true)}
                   className="w-full min-w-[200px] bg-green-800 text-white py-2 px-3 rounded-lg hover:bg-blue-900 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-medium text-[14px]"
                 >
                   Crear Publicacion
@@ -134,7 +131,9 @@ function Inicio() {
           <h1 className="text-[20px] font-bold">Cursos</h1>
         </div>
       </div>
-      <ModalPublicaciones  />
+      <ModalPublicaciones openState={(func=() => {}) => {
+        stateModalPost.current = func;
+      }} />
     </section>
   </div>
 }

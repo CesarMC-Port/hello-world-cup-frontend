@@ -1,13 +1,13 @@
 import { Button, Form, Input, Modal, Upload } from "antd";
 import { UploadOutlined } from '@ant-design/icons';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { createPost } from "../services/post-services";
 
-export const ModalPublicaciones = () => {
+export const ModalPublicaciones = ({openState}) => {
     const [form] = Form.useForm();
     const [close, setClose] = useState(false)
-    const [open, setOpen] = useState(true)
+    const [open, setOpen] = useState(false)
     
 
     const onFinish = async () => {
@@ -32,8 +32,13 @@ export const ModalPublicaciones = () => {
         } finally {
             setClose(true);
         }
-  };
-    return <Modal open={open} onOk={onFinish} clos={close}  >
+    };
+
+    useEffect(() => {
+        openState((bul) => setOpen(bul))
+    },[])
+
+    return <Modal open={open} onOk={onFinish} onCancel={() => setOpen(false)}  >
         <Form
             form={form}
             onFinish={onFinish}
