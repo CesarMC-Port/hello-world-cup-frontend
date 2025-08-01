@@ -47,7 +47,7 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
-  animation: fadeOutAfterDelay 5s forwards;
+  animation: fadeOutAfterDelay 4s forwards;
 }
 
 .ant-form-item-label{
@@ -61,4 +61,16 @@
 
 .ant-upload-select button{
   width: 100% !important;
+}
+
+.center-global{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.between{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

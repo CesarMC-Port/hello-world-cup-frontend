@@ -1,21 +1,21 @@
 import { axiosQuery } from '../utils/axios.js'
 
-export const login = async (data) => {
+export const login = async (data,callback=() => {}) => {
     try {
         const response = await axiosQuery.post('/login', data);
         return response.data;
     } catch (error) {
-        throw error.response ? error.response.data : new Error('Network Error');
+        callback(error?.response?.data?.errors?.error?.[0] || '')
     }
 }
 
-export const register = async (data) => {
+export const register = async (data,callback=() => {}) => {
     try {
         const response = await axiosQuery.post('/register', data, {
             headers: { 'Content-Type': 'multipart/form-data' },
         });
         return response.data;
     } catch (error) {
-        throw error.response ? error.response.data : new Error('Network Error');
+        callback(error?.response?.data?.errors?.error?.[0] || '')
     }
 }

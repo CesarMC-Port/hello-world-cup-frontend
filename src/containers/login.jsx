@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router'
 import { Input, Form } from "antd"
-import { axiosQuery } from '../utils/axios';
+import { login } from '../services/auth-services';
+import toast, { Toaster } from 'react-hot-toast';
 import Lottie from "lottie-react";
 import loginregistergif from '../assets/rocketwebpage.json'
 
@@ -12,10 +13,14 @@ function Login() {
   const   onFinish = async () => {
     setLoading(true);
     let user = form.getFieldValue();
-    const response = await axiosQuery.post("/login",user);
-    localStorage.setItem("token", response.data.data.token);
-    setLoading(false);
-    window.location.replace("/dashboard");
+    const response = await login(user, (mess) => {
+      toast.error(mess)
+    });
+    if(response){
+      localStorage.setItem("token", response?.data?.token);
+      setLoading(false);
+      window.location.replace("/dashboard");
+    }
   };
 
   const testAccounts = [
@@ -107,6 +112,7 @@ function Login() {
           </div>
         </div>
       </div>
+      <Toaster />
     </section>
   )
 }

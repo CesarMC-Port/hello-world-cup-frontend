@@ -27,7 +27,9 @@ function Login() {
     }
 
     try {
-      await register(formData);
+      await register(formData, (mess) => {
+        toast(mess)
+      });
       navigate('/login');
     } catch (error) {
       console.error("Error al registrar:", error);
