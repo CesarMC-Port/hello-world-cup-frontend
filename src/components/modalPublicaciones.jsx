@@ -1,7 +1,7 @@
 import { Button, Form, Input, Modal, Upload } from "antd";
 import { UploadOutlined } from '@ant-design/icons';
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { createPost } from "../services/post-services";
 
 export const ModalPublicaciones = ({openState}) => {
@@ -27,11 +27,13 @@ export const ModalPublicaciones = ({openState}) => {
         try {
         await createPost(formData, (mess) => {
             toast(mess)
+            console.log
         });
         } catch (error) {
         console.error("Error al subir una Publicación:", error);
         } finally {
             setOpen(false);
+            form.resetFields()
         }
     };
 
@@ -73,7 +75,7 @@ export const ModalPublicaciones = ({openState}) => {
                 </Upload>
             </Form.Item>
         </Form>
-
+    <Toaster />
     </Modal>
     
 }
